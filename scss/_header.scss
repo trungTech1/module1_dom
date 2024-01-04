@@ -1,0 +1,198 @@
+.header-top {
+  width: 1300px;
+  height: 57px;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 30px;
+  margin-bottom: 39px;
+  display: flex;
+  justify-content: space-between;
+}
+.header-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 124px;
+  &-title {
+    color: #41403e;
+    font-family: "Chilanka";
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.05px;
+    text-transform: uppercase;
+  }
+  &-index {
+    color: #a3a2a1;
+    font-family: "Montserrat";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.9px;
+    text-transform: capitalize;
+  }
+}
+
+.header-search {
+  width: 472px;
+  height: 50px;
+  padding: 16px 0px 16px 25px;
+  color: #908f8d;
+  font-family: "Montserrat";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-color: #80808042;
+  border-radius: 5px;
+}
+.search-wrapper {
+  position: relative;
+}
+
+.search-icon-wrapper {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* hoặc giá trị phù hợp để điều chỉnh vị trí icon */
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.header-phone {
+  margin-left: 131px;
+  margin-right: 67px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  &-text {
+    color: #908f8d;
+    font-family: "Montserrat";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+  &-number {
+    color: #41403e;
+    font-family: "Chilanka";
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.19px;
+  }
+}
+.header-email {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  &-text {
+    color: #908f8d;
+    font-family: "Montserrat";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+  &-info {
+    color: #41403e;
+    font-family: "Chilanka";
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.19px;
+  }
+}
+.header-botton {
+  width: 1312px;
+  height: 32px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  display: block;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.header-categories-selection {
+  color: #41403e;
+  font-family: "Chilanka";
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.19px;
+  text-transform: capitalize;
+  border: none;
+  width: 173px;
+  height: 21px;
+  margin-right: 189px;
+}
+.header-menu {
+  &-list {
+    margin-right: 228px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+  }
+  &-link {
+    text-decoration: none;
+    color: #41403e;
+    font-family: "Chilanka";
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.19px;
+    text-transform: capitalize;
+  }
+  &-item {
+    list-style: none;
+  }
+}
+.header-authen {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  #img {
+    width: 29px;
+    height: 29px;
+  }
+}
+.header-menu-item:hover .header-menu-link {
+  color: #e74c3c;
+}
+.sigupButton,
+.sigoutButton {
+  padding: 10px 45px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+.sigupButton {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.sigoutButton {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.sigupButton:hover,
+.sigoutButton:hover {
+  background-color: #45a049;
+}

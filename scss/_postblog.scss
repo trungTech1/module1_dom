@@ -1,0 +1,127 @@
+.blogPosts {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    width: 1300px;
+    gap: 30px;
+    margin: 0 auto;
+  }
+  &-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    &-title {
+      color: #41403e;
+      font-family: "Chilanka";
+      font-size: 55px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.55px;
+    }
+    &-button {
+      padding: 28px 50px;
+      border-radius: 4px;
+      border: 1px solid #41403e;
+      color: #41403e;
+      font-family: "Chilanka";
+      font-size: 19px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.38px;
+    }
+  }
+  &-block {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+  &-img {
+    width: 420px;
+    position: relative;
+    &-date {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      width: 80px;
+      height: 80px;
+      padding: 15px 25px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-direction: column;
+      border-radius: 10px;
+      background: #fff;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      width: 80px;
+      height: 80px;
+      padding: 15px 25px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      &-number {
+        color: #dead6f;
+        font-family: "Montserrat";
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.26px;
+      }
+      &-text {
+        color: #41403e;
+        font-family: "Montserrat";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+  }
+  &-title {
+    color: #41403e;
+    font-family: "Chilanka";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.26px;
+  }
+  &-infomation {
+    color: #908f8d;
+    font-family: "Montserrat";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    &-link {
+      color: #908f8d;
+      font-family: "Chilanka";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.32px;
+      text-decoration: none;
+      display: flex;
+      padding-bottom: 10px;
+      align-items: flex-start;
+      gap: 10px;
+      border-bottom: 3px solid #d9d9d8;
+      width: 93px;
+    }
+  }
+}

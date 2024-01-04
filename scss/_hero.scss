@@ -1,0 +1,85 @@
+.hero {
+  &-button {
+    display: flex;
+    padding: 28px 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px;
+    border: 1px solid #41403e;
+    color: #41403e;
+    font-family: "Chilanka";
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.38px;
+  }
+  &-container {
+    position: relative;
+    width: 1920px;
+    height: 871px;
+    background-color: #f9f3ecad;
+    margin-top: 19px;
+  }
+  &-img {
+    position: absolute;
+    top: 31px;
+    left: 289px;
+    width: 521px;
+    height: 720px;
+    z-index: 2;
+  }
+  &-circle {
+    position: absolute;
+    top: 189px;
+    left: 247px;
+    width: 606px;
+    height: 606px;
+    background-color: #eee1d2;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  &-infomation {
+    position: absolute;
+    top: 222px;
+    right: 310px;
+    width: 699px;
+    height: 350px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    &-sale {
+      color: #dead6f;
+      font-family: "Montserrat";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 1.8px;
+    }
+    &-desc {
+      color: #41403e;
+      font-family: "Chilanka";
+      font-size: 87px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 2.64px;
+    }
+    &-small {
+      color: #dead6f;
+      font-family: "Chilanka";
+      font-size: 88px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 2.64px;
+    }
+  }
+}
+.hero-button:hover {
+  transform: translateY(5px);
+  background-color: #8080801f;
+}

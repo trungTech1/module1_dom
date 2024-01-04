@@ -1,0 +1,40 @@
+.utilities {
+  &-container {
+    display: flex;
+    width: 1300px;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    flex: 1 0 0;
+  }
+  &-img {
+    border-radius: 50px;
+    border: 1px solid #d9d9d8;
+    padding: 20px;
+  }
+  &-title {
+    color: #41403e;
+    font-family: "Chilanka";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.26px;
+  }
+  &-info {
+    color: #908f8d;
+    font-family: "Montserrat";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
