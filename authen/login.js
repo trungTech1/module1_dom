@@ -91,28 +91,24 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
 document
   .getElementById("signInWithGoogle")
   .addEventListener("click", async () => {
-    try {
-      let result = await signInWithGoogle();
-      let users = JSON.parse(localStorage.getItem("users") || "[]");
-      let checkEmail = users.find((user) => user.email === result.user.email);
-      if (checkEmail) {
-        let user = users.find((item) => item.email === result.user.email);
-        let token = createToken(user);
-        localStorage.setItem("token", token);
-        window.location.href = "/";
-      } else {
-        let newUser = {
-          userName: Math.ceil(Date.now() * Math.random()),
-          email: result.user.email,
-          password: hash(Math.ceil(Date.now() * Math.random())),
-          avata: result.user.photoURL,
-        };
-        localStorage.setItem("users", JSON.stringify([...users, newUser]));
-        let token = createToken(newUser);
-        localStorage.setItem("token", token);
-        window.location.href = "/";
-      }
-    } catch (err) {
-      console.log(err);
+    let result = await signInWithGoogle();
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
+    let checkEmail = users.find((user) => user.email === result.user.email);
+    if (checkEmail) {
+      let user = users.find((item) => item.email === result.user.email);
+      let token = createToken(user);
+      localStorage.setItem("token", token);
+      window.location.href = "/";
+    } else {
+      let newUser = {
+        userName: Math.ceil(Date.now() * Math.random()),
+        email: result.user.email,
+        password: hash(Math.ceil(Date.now() * Math.random())),
+        avata: result.user.photoURL,
+      };
+      localStorage.setItem("users", JSON.stringify([...users, newUser]));
+      let token = createToken(newUser);
+      localStorage.setItem("token", token);
+      window.location.href = "/";
     }
   });
