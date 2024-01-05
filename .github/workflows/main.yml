@@ -15,5 +15,5 @@ jobs:
        port: 22
        script: |
         cd /var/www/petdogshop
-        git pull
+        git pull git@github.com:trungTech1/module1_dom.git
          
