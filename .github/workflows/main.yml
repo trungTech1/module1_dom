@@ -11,7 +11,7 @@ jobs:
       with:
        host: ${{ secrets.HOST}}
        username: ${{secrets.USERNAME}}
-       password: ${{secrets.SSH_KEY}}
+       password: ${{secrets.PASSWORD}}
        port: 22
        script: |
         cd /var/www/petdogshop
