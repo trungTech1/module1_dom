@@ -16,4 +16,5 @@ jobs:
        script: |
         cd /var/www/petdogshop
         git pull git@github.com:trungTech1/module1_dom.git
-         curl -X POST -H "Content-Type: application/json" -H "Authorization: ${{secrets.DISCORD_A}}" -d `{"content":"Mọi người ơi dự án petshop của mình vừa cập nhật mọi người vào xem tại đường link : https://shibainudn.io.vn/"}` https://discord.com/api/v9/channels/1189872165470871632/messages 
+         curl -X POST -H "Content-Type: application/json" -H "Authorization: ${{secrets.DISCORD_A}}" -d '{"content":"Mọi người ơi dự án petshop của mình vừa cập nhật mọi người vào xem tại đường link : https://shibainudn.io.vn/"}' https://discord.com/api/v9/channels/1189872165470871632/messages
+ 
