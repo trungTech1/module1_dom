@@ -30,7 +30,8 @@ function renderHeader(data = null) {
                   </span>
                 </div>
               </div>
-<div>  ${data
+<div>  ${
+    data
       ? `<div class= "email-block"><p class="emailDisplay">${data.email}</p> <img class = "emailImg" src="${data.avata}" alt="hihi"> </div>
 <button onclick="logout()" class="sigoutButton">ĐĂNG XUẤT</button>`
       : `<button onclick="redirectToLogin()" class="sigupButton">ĐĂNG KÝ</button> 
@@ -240,7 +241,6 @@ function hash(everyone) {
 function checkLogin() {
   if (localStorage.getItem("token")) {
     let tokenData = decodeToken(localStorage.getItem("token"));
-    console.log("token", tokenData);
     if (tokenData.privatekey !== "quangtrungdn") {
       localStorage.removeItem("token");
       return null;
