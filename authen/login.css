@@ -47,7 +47,8 @@ body {
   -webkit-transform: translate(-50%, 0%);
   -webkit-transition: all 0.3s ease;
 }
-.form-structor .signup.slide-up .form-holder, .form-structor .signup.slide-up .submit-btn {
+.form-structor .signup.slide-up .form-holder,
+.form-structor .signup.slide-up .submit-btn {
   opacity: 0;
   visibility: hidden;
 }
@@ -152,7 +153,7 @@ body {
   -webkit-transition: all 0.3s ease;
 }
 .form-structor .login .center .form-title {
-  color: #000;
+  color: #156c2ac2;
   font-size: 1.7em;
   text-align: center;
 }
@@ -219,7 +220,8 @@ body {
   -webkit-transform: translate(-50%, 0%);
   -webkit-transition: all 0.3s ease;
 }
-.form-structor .login.slide-up .form-holder, .form-structor .login.slide-up .submit-btn {
+.form-structor .login.slide-up .form-holder,
+.form-structor .login.slide-up .submit-btn {
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 0.3s ease;
@@ -236,4 +238,27 @@ body {
   opacity: 1;
   visibility: visible;
   -webkit-transition: all 0.3s ease;
-}/*# sourceMappingURL=login.css.map */
+} /*# sourceMappingURL=login.css.map */
+.social-login {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-login a {
+  display: inline-block;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.social-login img {
+  width: 30px; /* Điều chỉnh kích thước biểu tượng xã hội */
+  height: 30px;
+  border-radius: 50%; /* Làm tròn góc cho biểu tượng */
+  border: 1px solid #ccc; /* Đường viền */
+  transition: transform 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+.social-login img:hover {
+  transform: scale(1.2); /* Hiệu ứng phóng to khi hover */
+}

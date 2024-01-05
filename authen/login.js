@@ -1,34 +1,12 @@
+import { signInWithGoogle } from "../firebase.js";
 if (checkLogin()) window.location.href = "/";
 console.clear();
+export function changeForm(formToShow, formToHide) {
+  formToShow.classList.add("slide-up");
+  formToHide.classList.remove("slide-up");
+}
 
-const loginBtn = document.getElementById("login");
-const signupBtn = document.getElementById("signup");
-
-loginBtn.addEventListener("click", (e) => {
-  let parent = e.target.parentNode.parentNode;
-  Array.from(e.target.parentNode.parentNode.classList).find((element) => {
-    if (element !== "slide-up") {
-      parent.classList.add("slide-up");
-    } else {
-      signupBtn.parentNode.classList.add("slide-up");
-      parent.classList.remove("slide-up");
-    }
-  });
-});
-
-signupBtn.addEventListener("click", (e) => {
-  let parent = e.target.parentNode;
-  Array.from(e.target.parentNode.classList).find((element) => {
-    if (element !== "slide-up") {
-      parent.classList.add("slide-up");
-    } else {
-      loginBtn.parentNode.parentNode.classList.add("slide-up");
-      parent.classList.remove("slide-up");
-    }
-  });
-});
-
-function register(event) {
+export function register(event) {
   event.preventDefault();
   const userName = event.target.userName.value;
   const email = event.target.Email.value;
@@ -57,12 +35,16 @@ function register(event) {
   }
   localStorage.setItem("users", JSON.stringify([...users, newUser]));
   alert("tạo tài khoản thành công");
+  let loginFormContainer = document.querySelector(".login");
+  let signupFormContainer = document.querySelector(".signup");
+  signupFormContainer.classList.add("slide-up");
+  loginFormContainer.classList.remove("slide-up");
   console.log("newuser", newUser);
   event.target.userName.value = "";
   event.target.Email.value = "";
   event.target.Password.value = "";
 }
-function login(event) {
+export function login(event) {
   event.preventDefault();
   let data = {
     loginId: event.target.loginId.value,
@@ -90,3 +72,47 @@ function login(event) {
   localStorage.setItem("token", token);
   window.location.href = "/";
 }
+const loginBtn = document.getElementById("login");
+const signupBtn = document.getElementById("signup");
+
+loginBtn.addEventListener("click", () => {
+  changeForm(signupBtn.parentNode, loginBtn.parentNode.parentNode);
+});
+
+signupBtn.addEventListener("click", () => {
+  changeForm(loginBtn.parentNode.parentNode, signupBtn.parentNode);
+});
+document.getElementById("registerForm").addEventListener("submit", (e) => {
+  register(e);
+});
+document.getElementById("loginForm").addEventListener("submit", (e) => {
+  login(e);
+});
+document
+  .getElementById("signInWithGoogle")
+  .addEventListener("click", async () => {
+    try {
+      let result = await signInWithGoogle();
+      let users = JSON.parse(localStorage.getItem("users") || "[]");
+      let checkEmail = users.find((user) => user.email === result.user.email);
+      if (checkEmail) {
+        let user = users.find((item) => item.email === result.user.email);
+        let token = createToken(user);
+        localStorage.setItem("token", token);
+        window.location.href = "/";
+      } else {
+        let newUser = {
+          userName: Math.ceil(Date.now() * Math.random()),
+          email: result.user.email,
+          password: hash(Math.ceil(Date.now() * Math.random())),
+          avata: result.user.photoURL,
+        };
+        localStorage.setItem("users", JSON.stringify([...users, newUser]));
+        let token = createToken(newUser);
+        localStorage.setItem("token", token);
+        window.location.href = "/";
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  });

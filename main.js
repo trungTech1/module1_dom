@@ -32,8 +32,8 @@ function renderHeader(data = null) {
               </div>
 <div>  ${
     data
-      ? `<p>${data.email}</p>
-                  <button onclick="logout()" class="sigoutButton">ĐĂNG XUẤT</button>`
+      ? `<div class= "email-block"><p class="emailDisplay">${data.email}</p> <img class = "emailImg" src="${data.photo}" alt="hihi"> </div>
+<button onclick="logout()" class="sigoutButton">ĐĂNG XUẤT</button>`
       : `<button onclick="redirectToLogin()" class="sigupButton">ĐĂNG KÝ</button> 
       <button onclick="redirectToLogin()" class="sigupButton">ĐĂNG NHẬP</button>`
   }</div>
@@ -66,7 +66,7 @@ function renderHeader(data = null) {
                 </li>
               </ul>
               <div class="header-authen">
-                <a href="http://127.0.0.1:5500/authen" class="header-authen-icon"
+                <a href="./authen" class="header-authen-icon"
                   ><img src="./img/ion_person.png" alt="" id="img"
                 /></a>
                 <a href="#" class="header-authen-icon"
@@ -258,5 +258,5 @@ function logout() {
   window.location.reload();
 }
 function redirectToLogin() {
-  window.location.href = " http://127.0.0.1:5500/authen/";
+  window.location.href = " ./authen/";
 }

@@ -4,15 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>authen</title>
+    <link
+      rel="icon"
+      href="https://seeklogo.com/images/R/rover-inu-rover-logo-95FF2F26C3-seeklogo.com.png"
+    />
     <link rel="stylesheet" href="./login.css" />
   </head>
   <body>
     <div class="form-structor">
-      <form onsubmit="register(event)" class="signup">
-        <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
+      <form id="registerForm" class="signup">
+        <h2 class="form-title" id="signup"><span>or</span>Register</h2>
         <div class="form-holder">
           <input type="text" class="input" placeholder="Name" name="userName" />
-          <p class="userNameerr" style="display: none">dang nhap lai nha</p>
           <input type="email" class="input" placeholder="Email" name="Email" />
           <input
             type="password"
@@ -24,8 +27,19 @@
         <button type="submit" class="submit-btn">Sign up</button>
       </form>
       <div class="login slide-up">
-        <form onsubmit="login(event)" class="center">
+        <form id="loginForm" class="center">
           <h2 class="form-title" id="login"><span>or</span>Log in</h2>
+          <div class="social-login">
+            <a href="#" id="signInWithGoogle">
+              <img src="../img/google-icons.png" alt="Google" />
+            </a>
+            <a href="#" id="signInWithGithub">
+              <img src="../img/github-mark.png" alt="GitHub" />
+            </a>
+            <a href="#" id="signInWithfacebook">
+              <img src="../img/facebook-icons.png" alt="Facebook" />
+            </a>
+          </div>
           <div class="form-holder">
             <input
               type="text"
@@ -44,7 +58,9 @@
         </form>
       </div>
     </div>
+    <script type="module" src="../firebase.js"></script>
     <script src="../main.js"></script>
-    <script src="login.js"></script>
+    <script type="module" src="login.js"></script>
   </body>
 </html>
+<img src="" alt="" />

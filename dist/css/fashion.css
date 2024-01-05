@@ -180,7 +180,7 @@ body {
 }
 
 .header-botton {
-  width: 80%;
+  width: 70%;
   height: 32px;
   margin-top: 10px;
   margin-bottom: 15px;
@@ -355,7 +355,7 @@ body {
 
 .type-container {
   display: flex !important;
-  width: 70%;
+  width: 1300px;
   justify-content: space-between;
   align-items: flex-start;
   display: block;
@@ -419,7 +419,7 @@ body {
 
 .subscribe-container {
   display: flex;
-  width: 56%;
+  width: 1080px;
   justify-content: center;
   align-items: flex-start;
   margin: 0 auto;
@@ -433,14 +433,14 @@ body {
 
 .petClothing-container {
   display: flex !important;
-  width: 55%;
+  width: 1300px;
   gap: 30px;
   flex-direction: column;
   margin: 0 auto;
 }
 .petClothing-heading {
   display: flex !important;
-  width: 100%;
+  width: 1300px;
   justify-content: space-between;
   align-items: flex-end;
   display: inline-block;
@@ -581,7 +581,7 @@ body {
 }
 
 .petFootdies-container {
-  width: 55%;
+  width: 1300px;
   margin: 0 auto;
 }
 .petFootdies-heading {
@@ -734,7 +734,7 @@ body {
 
 .feature-container {
   position: relative;
-  width: 100%;
+  width: 1920px;
   height: 763px;
   background: rgba(249, 243, 236, 0.6784313725);
 }
@@ -799,7 +799,7 @@ body {
 }
 
 .bestSelling-container {
-  width: 55%;
+  width: 1300px;
   margin: 0 auto;
 }
 .bestSelling-heading {
@@ -952,7 +952,7 @@ body {
 
 .register-container {
   position: relative;
-  width: 100%;
+  width: 1920px;
   height: 763px;
   background: rgba(249, 243, 236, 0.6784313725);
 }
@@ -973,7 +973,7 @@ body {
 .register-hero {
   position: absolute;
   top: 150px;
-  left: 37%;
+  left: 640px;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -1050,7 +1050,7 @@ body {
 .blogPosts-container {
   display: flex;
   flex-direction: column;
-  width: 55%;
+  width: 1300px;
   gap: 30px;
   margin: 0 auto;
 }
@@ -1086,7 +1086,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 30px;
+  gap: 20px;
 }
 .blogPosts-block-item {
   display: flex;
@@ -1215,8 +1215,8 @@ body {
 .petPicture {
   display: flex;
   align-items: flex-start;
-  width: 100%;
-  justify-content: space-around;
+  gap: 20px;
+  margin-left: 20px;
 }
 
 .footer-container {
@@ -1373,25 +1373,4 @@ body {
   align-items: flex-start;
   gap: 10px;
   list-style: none;
-} /*# sourceMappingURL=fashion.css.map */
-.email-block {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.emailDisplay {
-  color: #41403e;
-
-  font-family: "Chilanka";
-  font-size: 19px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.emailImg {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-}
+}/*# sourceMappingURL=fashion.css.map */
