@@ -1,4 +1,5 @@
 import { signInWithGoogle } from "../firebase.js";
+import { signInWithGitHub } from "../firebaseGithub.js";
 if (checkLogin()) window.location.href = "/";
 console.clear();
 export function changeForm(formToShow, formToHide) {
@@ -119,5 +120,37 @@ document
     } catch (err) {
       loaderBox.classList.remove("active");
       alert("vui lòng thử lại");
+    }
+  });
+document
+  .getElementById("signInWithGithub")
+  .addEventListener("click", async () => {
+    try {
+      let gitHub = await signInWithGitHub();
+      console.log("gitHub", gitHub);
+      console.log("gitHub.user", gitHub.user);
+      let users = JSON.parse(localStorage.getItem("users") || "[]");
+      let checkGithub = users.find((user) => user.email === gitHub.user.email);
+      if (checkGithub) {
+        let user = users.find((item) => item.email === gitHub.user.email);
+        let token = createToken(user);
+        localStorage.setItem("token", token);
+        window.location.href = "/";
+      } else {
+        let newUser = {
+          userName: Math.ceil(Date.now() * Math.random()),
+          email: gitHub.user.email,
+          password: hash(Math.ceil(Date.now() * Math.random())),
+          avata: gitHub.user.photoURL,
+        };
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+        let token = createToken(newUser);
+        localStorage.setItem("token", token);
+        window.location.href = "/";
+      }
+    } catch (err) {
+      alert("vui lòng thử lại");
+      console.log(err);
     }
   });
