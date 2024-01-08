@@ -1,5 +1,6 @@
 import { signInWithGoogle } from "../firebase.js";
 import { signInWithGitHub } from "../firebaseGithub.js";
+
 if (checkLogin()) window.location.href = "/";
 console.clear();
 export function changeForm(formToShow, formToHide) {

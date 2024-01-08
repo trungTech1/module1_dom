@@ -1,0 +1,64 @@
+// @media screen and (min-width: 1200px) {
+//   .authen {
+//     display: flex;
+//     margin-left: 29px;
+
+//     /* CSS Comment: Update the following style */
+//     .sigupButton {
+//       white-space: nowrap;
+//     }
+//   }
+// }
+
+@media screen and (max-width: 1199px) {
+  .hero {
+    &-container {
+      flex-direction: column;
+      gap: 20px;
+      padding-top: 70px;
+      align-items: center;
+      padding-bottom: 20px;
+    }
+    &-img {
+      bottom: -6%;
+      left: 2%;
+    }
+    &-circle {
+      width: 25vw;
+      height: 25vw;
+      margin-top: 4%;
+    }
+    &-infomation {
+      width: auto;
+      height: auto;
+      margin-bottom: 4%;
+      &-desc {
+        font-size: 35px;
+      }
+      &-small {
+        font-size: 35px;
+      }
+    }
+    &-button {
+      display: flex;
+      padding: 8px 17px;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      border-radius: 10px;
+      border: 1px solid #41403e;
+      font-size: 16px;
+    }
+  }
+  .authen {
+    display: flex;
+    margin-left: 29px;
+    .sigupButton {
+      white-space: nowrap;
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+}
+@media screen and (max-width: 1199px) {
+}

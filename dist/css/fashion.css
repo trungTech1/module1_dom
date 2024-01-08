@@ -293,10 +293,8 @@ body {
 }
 .hero-img {
   position: absolute;
-  top: 31px;
-  left: 289px;
-  width: 521px;
-  height: 720px;
+  top: -29%;
+  left: 6%;
   z-index: 2;
 }
 .hero-circle {
@@ -311,10 +309,9 @@ body {
 }
 .hero-infomation {
   position: absolute;
-  top: 222px;
-  right: 310px;
-  width: 699px;
-  height: 350px;
+  top: 33%;
+  right: 9%;
+  width: 38%;
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1373,4 +1370,51 @@ body {
   align-items: flex-start;
   gap: 10px;
   list-style: none;
+}
+
+@media screen and (max-width: 1199px) {
+  .hero-container {
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 70px;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  .hero-img {
+    bottom: -6%;
+    left: 2%;
+  }
+  .hero-circle {
+    width: 25vw;
+    height: 25vw;
+    margin-top: 4%;
+  }
+  .hero-infomation {
+    width: auto;
+    height: auto;
+    margin-bottom: 4%;
+  }
+  .hero-infomation-desc {
+    font-size: 35px;
+  }
+  .hero-infomation-small {
+    font-size: 35px;
+  }
+  .hero-button {
+    display: flex;
+    padding: 8px 17px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border-radius: 10px;
+    border: 1px solid #41403e;
+    font-size: 16px;
+  }
+  .authen {
+    display: flex;
+    margin-left: 29px;
+  }
+  .authen .sigupButton {
+    white-space: nowrap;
+  }
 }/*# sourceMappingURL=fashion.css.map */

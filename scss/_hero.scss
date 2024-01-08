@@ -24,10 +24,8 @@
   }
   &-img {
     position: absolute;
-    top: 31px;
-    left: 289px;
-    width: 521px;
-    height: 720px;
+    top: -29%;
+    left: 6%;
     z-index: 2;
   }
   &-circle {
@@ -42,10 +40,9 @@
   }
   &-infomation {
     position: absolute;
-    top: 222px;
-    right: 310px;
-    width: 699px;
-    height: 350px;
+    top: 33%;
+    right: 9%;
+    width: 38%;
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
