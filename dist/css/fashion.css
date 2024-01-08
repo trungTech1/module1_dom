@@ -493,6 +493,9 @@ body {
   line-height: normal;
   letter-spacing: 0.38px;
 }
+.petClothing-button:hover {
+  transform: translateY(5px);
+}
 .petClothing-product {
   display: flex;
   flex-direction: row;
@@ -658,6 +661,9 @@ body {
   line-height: normal;
   letter-spacing: 0.38px;
 }
+.petFootdies-button:hover {
+  transform: translateY(5px);
+}
 .petFootdies-product {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -717,6 +723,9 @@ body {
   gap: 6px;
   border-radius: 4px;
   border: 1px solid rgba(65, 64, 62, 0.2);
+}
+.petFootdies-product-addTocard:hover {
+  transform: translateY(5px);
 }
 .petFootdies-product-addTocard-heart {
   display: flex;
@@ -876,6 +885,9 @@ body {
   line-height: normal;
   letter-spacing: 0.38px;
 }
+.bestSelling-button:hover {
+  transform: translateY(5px);
+}
 .bestSelling-product {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -935,6 +947,9 @@ body {
   gap: 6px;
   border-radius: 4px;
   border: 1px solid rgba(65, 64, 62, 0.2);
+}
+.bestSelling-product-addTocard:hover {
+  transform: translateY(5px);
 }
 .bestSelling-product-addTocard-heart {
   display: flex;

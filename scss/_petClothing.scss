@@ -36,6 +36,9 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.38px;
+    &:hover {
+      transform: translateY(5px);
+    }
   }
   &-product {
     display: flex;

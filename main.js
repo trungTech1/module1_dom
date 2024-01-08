@@ -259,5 +259,5 @@ function logout() {
   window.location.reload();
 }
 function redirectToLogin() {
-  window.location.href = " ./authen/";
+  window.location.href = "/authen";
 }

@@ -7,7 +7,7 @@ export function changeForm(formToShow, formToHide) {
   formToShow.classList.add("slide-up");
   formToHide.classList.remove("slide-up");
 }
-
+// Hàm đăng ký
 export function register(event) {
   event.preventDefault();
   const userName = event.target.userName.value;
@@ -24,6 +24,7 @@ export function register(event) {
     userName: userName,
     email: email,
     password: hashedPassword,
+    cart: [],
   };
   let users = JSON.parse(localStorage.getItem("users") || "[]");
   if (
@@ -46,6 +47,7 @@ export function register(event) {
   event.target.Email.value = "";
   event.target.Password.value = "";
 }
+// Hàm đăng nhập
 export function login(event) {
   event.preventDefault();
   let data = {
@@ -90,6 +92,7 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
 document.getElementById("loginForm").addEventListener("submit", (e) => {
   login(e);
 });
+// Đăng nhập bằng google
 document
   .getElementById("signInWithGoogle")
   .addEventListener("click", async () => {
@@ -123,35 +126,35 @@ document
       alert("vui lòng thử lại");
     }
   });
-document
-  .getElementById("signInWithGithub")
-  .addEventListener("click", async () => {
-    try {
-      let gitHub = await signInWithGitHub();
-      console.log("gitHub", gitHub);
-      console.log("gitHub.user", gitHub.user);
-      let users = JSON.parse(localStorage.getItem("users") || "[]");
-      let checkGithub = users.find((user) => user.email === gitHub.user.email);
-      if (checkGithub) {
-        let user = users.find((item) => item.email === gitHub.user.email);
-        let token = createToken(user);
-        localStorage.setItem("token", token);
-        window.location.href = "/";
-      } else {
-        let newUser = {
-          userName: Math.ceil(Date.now() * Math.random()),
-          email: gitHub.user.email,
-          password: hash(Math.ceil(Date.now() * Math.random())),
-          avata: gitHub.user.photoURL,
-        };
-        users.push(newUser);
-        localStorage.setItem("users", JSON.stringify(users));
-        let token = createToken(newUser);
-        localStorage.setItem("token", token);
-        window.location.href = "/";
-      }
-    } catch (err) {
-      alert("vui lòng thử lại");
-      console.log(err);
-    }
-  });
+// document
+//   .getElementById("signInWithGithub")
+//   .addEventListener("click", async () => {
+//     try {
+//       let gitHub = await signInWithGitHub();
+//       console.log("gitHub", gitHub);
+//       console.log("gitHub.user", gitHub.user);
+//       let users = JSON.parse(localStorage.getItem("users") || "[]");
+//       let checkGithub = users.find((user) => user.email === gitHub.user.email);
+//       if (checkGithub) {
+//         let user = users.find((item) => item.email === gitHub.user.email);
+//         let token = createToken(user);
+//         localStorage.setItem("token", token);
+//         window.location.href = "/";
+//       } else {
+//         let newUser = {
+//           userName: Math.ceil(Date.now() * Math.random()),
+//           email: gitHub.user.email,
+//           password: hash(Math.ceil(Date.now() * Math.random())),
+//           avata: gitHub.user.photoURL,
+//         };
+//         users.push(newUser);
+//         localStorage.setItem("users", JSON.stringify(users));
+//         let token = createToken(newUser);
+//         localStorage.setItem("token", token);
+//         window.location.href = "/";
+//       }
+//     } catch (err) {
+//       alert("vui lòng thử lại");
+//       console.log(err);
+//     }
+//   });
