@@ -1,11 +1,12 @@
 function renderHeader(data = null) {
+  const baseUrl = location.origin;
   return `<header>
         <div class="container">
           <div class="header-container">
             <div class="header-top">
               <div class="header-logo">
                 <img
-                  src="./img/header-logo.jpg"
+                  src="${baseUrl}/img/header-logo.jpg"
                   alt=""
                   class="header-logo-img"
                 />
@@ -23,7 +24,7 @@ function renderHeader(data = null) {
                   />
                   <span class="search-icon-wrapper">
                     <img
-                      src="./img/ion_search.png"
+                      src="${baseUrl}/img/ion_search.png"
                       alt="Search Icon"
                       class="search-icon"
                     />
@@ -53,7 +54,7 @@ function renderHeader(data = null) {
                   <a href="#" class="header-menu-link">Page</a>
                 </li>
                 <li class="header-menu-item">
-                  <a href="#" class="header-menu-link">Shop</a>
+                  <a href="${baseUrl}/product" class="header-menu-link">Shop</a>
                 </li>
                 <li class="header-menu-item">
                   <a href="#" class="header-menu-link">Blog</a>
@@ -66,14 +67,14 @@ function renderHeader(data = null) {
                 </li>
               </ul>
               <div class="header-authen">
-                <a href="./authen" class="header-authen-icon"
-                  ><img src="./img/ion_person.png" alt="" id="img"
+                <a href="#" class="header-authen-icon"
+                  ><img src="${baseUrl}/img/ion_person.png" alt="" id="img"
                 /></a>
                 <a href="#" class="header-authen-icon"
-                  ><img src="./img/ion_heart.png" alt="" id="img"
+                  ><img src="${baseUrl}/img/ion_heart.png" alt="" id="img"
                 /></a>
                 <a href="#" class="header-authen-icon"
-                  ><img src="./img/ion_cart.png" alt="" id="img" />
+                  ><img src="${baseUrl}/img/ion_cart.png" alt="" id="img" />
                 </a>
               </div>
             </div>
@@ -83,6 +84,7 @@ function renderHeader(data = null) {
 }
 
 function renderFooter() {
+  const baseUrl = location.origin;
   return ` <footer>
         <div class="container">
           <div class="footer-container">
@@ -90,7 +92,7 @@ function renderFooter() {
               <div class="categorie">
                 <div class="footer-logo">
                   <img
-                    src="./img/header-logo.jpg"
+                    src="${baseUrl}/img/header-logo.jpg"
                     alt=""
                     class="footer-logo-img"
                   />
@@ -112,20 +114,20 @@ function renderFooter() {
                   <li class="social-item">
                     <a href="#" class="social-link"
                       ><img
-                        src="./img/social-Insta.png"
+                        src="${baseUrl}/img/social-Insta.png"
                         alt=""
                         class="social-icon"
                     /></a>
                   </li>
                   <li class="social-item">
                     <a href="#" class="social-link"
-                      ><img src="./img/social-p.png" alt="" class="social-icon"
+                      ><img src="${baseUrl}/img/social-p.png" alt="" class="social-icon"
                     /></a>
                   </li>
                   <li class="social-item">
                     <a href="#" class="social-link"
                       ><img
-                        src="./img/social-twiter.png"
+                        src="${baseUrl}/img/social-twiter.png"
                         alt=""
                         class="social-icon"
                     /></a>
@@ -133,7 +135,7 @@ function renderFooter() {
                   <li class="social-item">
                     <a href="#" class="social-link"
                       ><img
-                        src="./img/social-youtube.png"
+                        src="${baseUrl}/img/social-youtube.png"
                         alt=""
                         class="social-icon"
                     /></a>

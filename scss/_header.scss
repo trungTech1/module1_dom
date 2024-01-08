@@ -1,5 +1,5 @@
 .header-top {
-  width: 80%;
+  width: 100%;
   height: 57px;
   display: inline-block;
   position: relative;
@@ -9,12 +9,14 @@
   margin-bottom: 39px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 3%;
 }
 .header-logo {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-right: 124px;
   &-title {
     color: #41403e;
     font-family: "Chilanka";
@@ -38,8 +40,7 @@
 }
 
 .header-search {
-  width: 472px;
-  height: 50px;
+  width: 30vw;
   padding: 16px 0px 16px 25px;
   color: #908f8d;
   font-family: "Montserrat";
@@ -171,4 +172,27 @@
 .sigupButton:hover,
 .sigoutButton:hover {
   background-color: #45a049;
+}
+.email-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.emailImg {
+  width: 3vw;
+  border-radius: 50%;
+}
+.emailDisplay {
+  color: #41403e;
+  font-family: "Chilanka";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.product-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
