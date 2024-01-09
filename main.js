@@ -73,9 +73,10 @@ function renderHeader(data = null) {
                 <a href="#" class="header-authen-icon"
                   ><img src="${baseUrl}/img/ion_heart.png" alt="" id="img"
                 /></a>
-                <a href="#" class="header-authen-icon"
+                <div class="icon-cart"><a href="#" class="header-authen-icon"
                   ><img src="${baseUrl}/img/ion_cart.png" alt="" id="img" />
-                </a>
+                </a><span>0</span></div>
+                
               </div>
             </div>
           </div>
@@ -261,3 +262,5 @@ function logout() {
 function redirectToLogin() {
   window.location.href = "/authen";
 }
+
+

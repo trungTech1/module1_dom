@@ -4,6 +4,7 @@ document
 document
   .querySelector(".wrapper")
   .insertAdjacentHTML("beforeend", renderFooter());
+// lưu sản phẩn vào local và gọi, hiển thị sản phẩm
 if (!localStorage.getItem("products")) {
   let products = [
     {
@@ -115,7 +116,7 @@ function createDetail(products) {
                   </div>
                 </div>`;
 }
-
+//hàm gọi sản phẩm từ local và add sản phẩm vào form
 let productInCart = localStorage.getItem("products")
   ? JSON.parse(localStorage.getItem("products"))
   : [];
@@ -129,55 +130,34 @@ function addDetail(products) {
 }
 let products = JSON.parse(localStorage.getItem("products"));
 addDetail(products);
-
 function addtoCart(id) {
-  //Lấy token về để xác định tài khoản đang đăng nhập
+  //chắc chắn người dùng đã đăng nhập
   if (!localStorage.getItem("token")) {
-    alert("Hãy đăng nhập để dùng chức năng giỏ hàng");
-    return;
+    alert("Vui lòng đăng nhập để mua hàng");
   }
-  let currentUser = decodeToken(localStorage.getItem("token")).data;
+  //Lấy token về để xác định tài khoản đang đăng nhập
+  let currentUser = decodeToken(localStorage.getItem("token"));
+  console.log("datauser", currentUser);
 
   //Lấy toàn bộ người dùng từ CSDL
   let usersCSDL = JSON.parse(localStorage.getItem("users"));
-
   //Tìm người dùng đang đăng nhập trong CSDL bằng id có trong token
-  let userCSDL = usersCSDL.find((user) => user.id == currentUser.id);
-
-  if (!userCSDL) {
-    alert("Người dùng không tồn tại");
-    return;
+  let user = usersCSDL.find((user) => user.id === currentUser.id);
+  if (!user) {
+    alert("Người dùng không tồn tại ");
   }
-
   //tìm kiếm trong giỏ hàng của người dùng xem đã có sản phẩm này chưa
-  let existingProduct = userCSDL.cart.find((product) => product.id == id);
-
+  let existingProduct = user.cart.find((product) => product.id === id);
   //nếu đã tồn tại, thì tăng số lượng lên 1
   if (existingProduct) {
-    existingProduct.quantity += 1;
+    existingProduct.quantyti += 1;
   } else {
     //nếu không tồn tại, thì thêm sản phẩm đó vào giỏ hàng và để quantity = 1
-
-    let newProduct = {
+    let newCart = {
       id,
-      quantity: 1,
+      quantyti: 1,
     };
-
-    userCSDL.cart.push(newProduct);
+    user.cart.push(newCart);
   }
-
-  console.log(userCSDL);
   localStorage.setItem("users", JSON.stringify(usersCSDL));
-  //   let existingProduct = productInCart.find((product) => product.id === id);
-  //   if (existingProduct) {
-  //     existingProduct.quantity += 1;
-  //   } else {
-  //     let newProduct = {
-  //       ...products.find((product) => product.id === id),
-  //       quantity: 1,
-  //     };
-  //     productInCart.push(newProduct);
-  //   }
-  //   localStorage.setItem("products", JSON.stringify(productInCart));
-  //   console.log("Sản phẩm đã thêm hoặc cập nhật", productInCart);
 }

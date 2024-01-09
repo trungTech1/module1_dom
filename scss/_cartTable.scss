@@ -1,0 +1,73 @@
+.cart-table {
+  width: 30vw;
+  background-color: black;
+  color: white;
+  position: fixed;
+  inset: 0 -30vw 0 auto;
+  display: grid;
+  grid-template-rows: 70px 1fr 70px;
+  transition: transform 0.5s; /* Chỉnh sửa transition từ translate sang transform */
+  transform: translateX(-30vw); /* Sử dụng transform thay vì inset */
+  z-index: 1000;
+}
+.cart-table h2 {
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+}
+.cart-Btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.cart-Btn button {
+  background-color: yellow;
+  border: none;
+  cursor: pointer;
+}
+.cart-Btn .close {
+  background-color: white;
+}
+button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(2px);
+}
+.cart-item img {
+  width: 100%;
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: 142px 134px 80px 1fr;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+}
+.cart-quantity span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: wheat;
+  color: #000;
+  border-radius: 10%;
+  cursor: pointer;
+}
+.cart-quantity span:nth-child(2) {
+  background-color: transparent;
+  color: white;
+}
+.cart-quantity span:nth-child(even) {
+  background-color: #eee1;
+}
+.list-productCart {
+  overflow: auto;
+}
+.list-productCart::-webkit-scrollbar {
+  width: 0;
+}
+body.showcart {
+  overflow: hidden;
+}
+body.showcart .cart-table {
+  transform: translateX(
+    0
+  ); /* Hiển thị bảng khi trạng thái showcart được thêm vào body */
+}

@@ -114,6 +114,7 @@ document
           email: result.user.email,
           password: hash(Math.ceil(Date.now() * Math.random())),
           avata: result.user.photoURL,
+          cart: [],
         };
         localStorage.setItem("users", JSON.stringify([...users, newUser]));
         let token = createToken(newUser);
