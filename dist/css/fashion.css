@@ -1464,21 +1464,28 @@ body {
 }
 .cart-table {
   width: 30vw;
-  background-color: black;
+  background-color: #25252f;
   color: white;
   position: fixed;
-  inset: 0 -30vw 0 auto;
+  inset: 0 0 0 auto;
   display: grid;
-  grid-template-rows: 70px 1fr 70px;
-  transition: transform 0.5s; /* Chỉnh sửa transition từ translate sang transform */
-  transform: translateX(-30vw); /* Sử dụng transform thay vì inset */
+  grid-template-rows: 132px 1fr 71px 53px;
+  transition: transform 0.5s;
+  transform: translateX(30vw);
   z-index: 1000;
 }
 
 .cart-table h2 {
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  font-weight: 300;
+  font-weight: 1000;
+  text-align: center;
+  font-size: 44px;
+  font-family: "Chilanka";
+  color: #41403e;
+  background: #eeebe5;
 }
 
 .cart-Btn {
@@ -1490,9 +1497,16 @@ body {
   background-color: yellow;
   border: none;
   cursor: pointer;
+  color: #41403e;
+  font-family: "Chilanka";
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.34px;
 }
 
-.cart-Btn .close {
+.cart-Btn .closeTable {
   background-color: white;
 }
 
@@ -1502,25 +1516,35 @@ button:hover {
 }
 
 .cart-item img {
-  width: 100%;
+  width: 69%;
 }
 
 .cart-item {
   display: grid;
-  grid-template-columns: 142px 134px 80px 1fr;
+  grid-template-columns: 1fr 1fr 69px 70px;
   gap: 10px;
   text-align: center;
   align-items: center;
+  justify-items: center;
+  padding: 20px 14px;
+}
+
+.cart-quantity {
+  display: flex;
+  justify-content: space-between;
+  gap: 3px;
 }
 
 .cart-quantity span {
-  display: inline-block;
+  display: flex;
   width: 20px;
   height: 20px;
   background-color: wheat;
   color: #000;
   border-radius: 10%;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart-quantity span:nth-child(2) {
@@ -1533,17 +1557,44 @@ button:hover {
 }
 
 .list-productCart {
+  display: flex;
+  flex-direction: column;
   overflow: auto;
+}
+.list-productCart .product-name {
+  color: #ddd5c5;
+  font-family: "Chilanka";
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.26px;
 }
 
 .list-productCart::-webkit-scrollbar {
   width: 0;
 }
 
-body.showcart {
+.wrapper.showcart {
   overflow: hidden;
 }
 
-body.showcart .cart-table {
-  transform: translateX(0); /* Hiển thị bảng khi trạng thái showcart được thêm vào body */
+.wrapper.showcart .cart-table {
+  transform: translateX(0);
+  transition: transform 0.5s;
+}
+
+.wrapper:not(.showcart) .cart-table {
+  transform: translateX(30vw);
+}
+
+.cart-item:nth-child(odd) {
+  background-color: #41403e; /* Màu cho vị trí lẻ */
+}
+
+#totalContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 27px;
 }/*# sourceMappingURL=fashion.css.map */
