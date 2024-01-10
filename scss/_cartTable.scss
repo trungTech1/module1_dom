@@ -63,11 +63,20 @@ button:hover {
 .list-productCart::-webkit-scrollbar {
   width: 0;
 }
-body.showcart {
+.wrapper.showcart {
   overflow: hidden;
 }
-body.showcart .cart-table {
-  transform: translateX(
-    0
-  ); /* Hiển thị bảng khi trạng thái showcart được thêm vào body */
+.wrapper {
+  position: relative;
+}
+
+.wrapper.showcart .cart-table {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  max-height: 80vh; /* Giới hạn chiều cao của giỏ hàng để tránh quá màn hình */
+  overflow-y: auto; /* Cho phép cuộn nếu nội dung vượt quá chiều cao */
 }
