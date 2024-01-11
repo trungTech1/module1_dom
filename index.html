@@ -35,9 +35,24 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
     <div class="wrapper">
+      <div class="progress-container">
+        <div class="progress-bar" id="myProgressBar"></div>
+      </div>
+      <div class="wrapper showcart">
+        <div class="cart-table">
+          <h2>Shopping Cart</h2>
+          <div class="list-productCart" id="cartContainer"></div>
+          <div id="totalContainer"></div>
+          <div class="cart-Btn">
+            <button class="closeTable">Close</button>
+            <button class="checkOut">Check out</button>
+          </div>
+        </div>
+      </div>
       <main>
         <div class="container">
           <div class="main-container">
@@ -59,7 +74,12 @@
                 </div>
               </div>
             </section>
-            <section class="type">
+            <section
+              class="type"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+            >
               <div class="container">
                 <div class="type-container">
                   <div class="type-item">
@@ -97,12 +117,18 @@
                 </div>
               </div>
             </section>
-            <section class="petClothing">
+            <section
+              class="petClothing"
+              data-aos="fade-down-right"
+              data-aos-duration="1000"
+            >
               <div class="container">
                 <div class="petClothing-container">
                   <div class="petClothing-heading">
                     <h2 class="petClothing-title">Pet Clothing</h2>
-                    <button class="petClothing-button">shop all -></button>
+                    <button class="petClothing-button" id="Shopping">
+                      shop all ->
+                    </button>
                   </div>
                   <div class="petClothing-product">
                     <div class="petClothing-product-detail">
@@ -235,7 +261,12 @@
                 </div>
               </div>
             </section>
-            <section class="petFoodies">
+            <section
+              class="petFoodies"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+            >
               <div class="container">
                 <div class="petFootdies-container">
                   <div class="petFootdies-heading">
@@ -254,7 +285,9 @@
                         <a href="#" class="petFootdies-select-link">BIRD</a>
                       </li>
                     </ul>
-                    <button class="petFootdies-button">shop all -></button>
+                    <button class="petFootdies-button" id="Shopping">
+                      shop all ->
+                    </button>
                   </div>
                   <div class="petFootdies-product">
                     <div class="petFootdies-product-detail">
@@ -512,7 +545,12 @@
                 </div>
               </div>
             </section>
-            <section class="feature">
+            <section
+              class="feature"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+            >
               <div class="container">
                 <div class="feature-container">
                   <img src="./img/feature-img.png" alt="" class="feature-img" />
@@ -520,12 +558,19 @@
                   <div class="feature-info">
                     <p class="feature-text">Upto 40% off</p>
                     <h2 class="feature-title">Clearance sale !!!</h2>
-                    <button class="feature-button">shop All -></button>
+                    <button class="feature-button" id="Shopping">
+                      shop All ->
+                    </button>
                   </div>
                 </div>
               </div>
             </section>
-            <section class="subscribe">
+            <section
+              class="subscribe"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+            >
               <div class="container">
                 <div class="subscribe-container">
                   <div class="subcribe-img">
@@ -575,12 +620,19 @@
                 </div>
               </div>
             </section>
-            <section class="bestSelling">
+            <section
+              class="bestSelling"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+            >
               <div class="container">
                 <div class="bestSelling-container">
                   <div class="bestSelling-heading">
                     <h2 class="bestSelling-title">Best selling products</h2>
-                    <button class="bestSelling-button">shop all -></button>
+                    <button class="bestSelling-button" id="Shopping">
+                      shop all ->
+                    </button>
                   </div>
                   <div class="bestSelling-product">
                     <div class="bestSelling-product-detail">
@@ -712,7 +764,12 @@
                 </div>
               </div>
             </section>
-            <section class="register">
+            <section
+              class="register"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+            >
               <div class="container">
                 <div class="register-container">
                   <div class="register-hero">
@@ -761,7 +818,12 @@
                 </div>
               </div>
             </section>
-            <section class="blogPosts">
+            <section
+              class="blogPosts"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+            >
               <div class="container">
                 <div class="blogPosts-container">
                   <div class="blogPosts-heading">
@@ -850,7 +912,12 @@
                 </div>
               </div>
             </section>
-            <section class="utilities">
+            <section
+              class="utilities"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+            >
               <div class="container">
                 <div class="utilities-container">
                   <div class="utilities-item">
@@ -900,7 +967,12 @@
                 </div>
               </div>
             </section>
-            <section class="petPicture">
+            <section
+              class="petPicture"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"
+            >
               <img src="./img/petPicture1.png" alt="" class="petPicture-img" />
               <img src="./img/petPicture2.png" alt="" class="petPicture-img" />
               <img src="./img/petPicture3.png" alt="" class="petPicture-img" />
@@ -912,10 +984,14 @@
         </div>
       </main>
     </div>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <script src="main.js"></script>
     <script src="home.js"></script>
-    <script src="cartCheck.js"></script>
+    <script src="showCart.js"></script>
+    <script src="./product/product.js"></script>
     <script src="firebase.js"></script>
   </body>
 </html>

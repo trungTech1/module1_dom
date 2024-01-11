@@ -1,9 +1,4 @@
-document
-  .querySelector(".wrapper")
-  .insertAdjacentHTML("afterbegin", renderHeader(checkLogin()));
-document
-  .querySelector(".wrapper")
-  .insertAdjacentHTML("beforeend", renderFooter());
+
 function createDetail(products) {
   return `<div class="petFootdies-product-detail">
                   <div class="petFootdies-img-block">
@@ -199,12 +194,17 @@ function createCartItem(cartItem) {
           cartItem.id
         }')">-</span>
       </div>
-       <div class="totalPrice">${total.toFixed(2)}</div> 
+       <div class="totalPrice">$ ${total.toFixed(2)}</div> 
        <div></div>
        <div></div>
-       <span class = "deleteProduct" onclick = "deleteProduct('${
-         cartItem.id
-       }')">delete</span>
+        <button                
+      class="codepro-btn codepro-btn-3 hover-border-5"
+      target="blank"
+      title="Code Pro"
+       onclick = "deleteProduct('${cartItem.id}')"
+    >
+      <span>delete</span>
+    </button>
     </div>
   `;
 }
@@ -296,4 +296,22 @@ function updateCartItemCount() {
 
   renderShoppingCart();
 }
+
+let searchProduct = document.querySelector(".search-icon-wrapper");
+let searchInput = document.querySelector(".header-search");
+function performSearch() {
+  let searchTerm = searchInput.value.toLowerCase();
+  console.log("da vao");
+  renderProducts(
+    productList.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm)
+    )
+  );
+}
+searchProduct.addEventListener("click", performSearch);
+searchInput.addEventListener("keypress", (event) => {
+  if (event.keyCode === 13) {
+    performSearch();
+  }
+});
 renderShoppingCart();

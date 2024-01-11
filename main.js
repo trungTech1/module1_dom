@@ -22,7 +22,7 @@ function renderHeader(data = null) {
                     placeholder="Search for more than 10,000 products"
                     class="header-search"
                   />
-                  <span class="search-icon-wrapper">
+                  <span class="search-icon-wrapper" >
                     <img
                       src="${baseUrl}/img/ion_search.png"
                       alt="Search Icon"
@@ -33,7 +33,13 @@ function renderHeader(data = null) {
               </div>
 <div>  ${
     data
-      ? `<div class= "email-block"><p class="emailDisplay">${data.email}</p> <img class = "emailImg" src="${data.avata}" alt="hihi"> </div>
+      ? `<div class= "email-block"><p class="emailDisplay">${
+          data.email
+        }</p> <img class = "emailImg" src="${
+          data.avata
+            ? `<img class="emailImg" src="${data.avata}" alt="hihi">`
+            : "<span>No avatar available</span>"
+        }" alt="hihi"> </div>
 <button onclick="logout()" class="sigoutButton">ĐĂNG XUẤT</button>`
       : `<button onclick="redirectToLogin()" class="sigupButton">ĐĂNG KÝ</button> 
       <button onclick="redirectToLogin()" class="sigupButton">ĐĂNG NHẬP</button>`
@@ -48,7 +54,7 @@ function renderHeader(data = null) {
               </select>
               <ul class="header-menu-list">
                 <li class="header-menu-item">
-                  <a href="#" class="header-menu-link">Home</a>
+                  <a onclick = "reloadHome()" href="http://127.0.0.1:5500/index.html" class="header-menu-link">Home</a>
                 </li>
                 <li class="header-menu-item">
                   <a href="#" class="header-menu-link">Page</a>
@@ -262,3 +268,24 @@ function logout() {
 function redirectToLogin() {
   window.location.href = "/authen";
 }
+function reloadHome() {
+  console.log("Redirecting to home...");
+  setTimeout(function () {
+    window.location.href = "http://127.0.0.1:5500/index.html";
+  }, 5000);
+}
+document.getElementById("Shopping").addEventListener("click", () => {
+  console.log("Vào trang shop");
+  // Hiển thị thanh progress bar
+  const progressBar = document.getElementById("myProgressBar");
+  progressBar.style.width = "0%";
+  progressBar.style.transition = "width 1s linear";
+
+  // Thiết lập chuyển hướng sau 1 giây
+  setTimeout(() => {
+    progressBar.style.width = "100%";
+    setTimeout(() => {
+      window.location.href = "http://127.0.0.1:5500/product/";
+    }, 1000);
+  }, 1000);
+});
