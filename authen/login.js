@@ -1,5 +1,5 @@
 import { signInWithGoogle } from "../firebase.js";
-import { signInWithGitHub } from "../firebaseGithub.js";
+// import { signInWithGitHub } from "../firebaseGithub.js";
 
 if (checkLogin()) window.location.href = "/";
 console.clear();
@@ -110,7 +110,7 @@ document
         window.location.href = "/";
       } else {
         let newUser = {
-          userName: Math.ceil(Date.now() * Math.random()),
+          id: Math.ceil(Date.now() * Math.random()),
           email: result.user.email,
           password: hash(Math.ceil(Date.now() * Math.random())),
           avata: result.user.photoURL,

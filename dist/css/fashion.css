@@ -1597,4 +1597,16 @@ button:hover {
   align-items: center;
   justify-content: center;
   font-size: 27px;
+}
+
+.cart-item .deleteProduct {
+  display: flex;
+  width: 74px;
+  height: 20px;
+  background-color: wheat;
+  color: #000;
+  border-radius: 10%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=fashion.css.map */

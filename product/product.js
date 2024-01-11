@@ -37,7 +37,6 @@ function createDetail(products) {
                   </div>
                 </div>`;
 }
-//hàm gọi sản phẩm từ local và add sản phẩm vào form
 let productInCart = localStorage.getItem("products")
   ? JSON.parse(localStorage.getItem("products"))
   : [];
@@ -51,38 +50,34 @@ function renderProducts(productList) {
   }
 }
 window.addEventListener("load", function () {
-  // Cập nhật hiển thị giỏ hàng khi trang được nạp lại
   renderShoppingCart();
+  updateCartItemCount();
 });
 function addtoCart(id) {
-  //chắc chắn người dùng đã đăng nhập
   if (!localStorage.getItem("token")) {
     alert("Vui lòng đăng nhập để mua hàng");
   }
-  //Lấy token về để xác định tài khoản đang đăng nhập
-  let currentUser = decodeToken(localStorage.getItem("token"));
-  //Lấy toàn bộ người dùng từ CSDL
+  let currentUser = decodeToken(localStorage.getItem("token")).data;
+  console.log(currentUser);
   let usersCSDL = JSON.parse(localStorage.getItem("users"));
-  //Tìm người dùng đang đăng nhập trong CSDL bằng id có trong token
+  console.log("usersCSDL", usersCSDL);
   let user = usersCSDL.find((user) => user.id === currentUser.id);
   if (!user) {
-    alert("Người dùng không tồn tại ");
+    alert("Người dùng không tồn tại");
   }
-  //tìm kiếm trong giỏ hàng của người dùng xem đã có sản phẩm này chưa
   let existingProduct = user.cart.find((product) => product.id === id);
-  //nếu đã tồn tại, thì tăng số lượng lên 1
   if (existingProduct) {
     existingProduct.quantity += 1;
   } else {
-    //nếu không tồn tại, thì thêm sản phẩm đó vào giỏ hàng và để quantity = 1
     let newCart = {
       id,
       quantity: 1,
     };
     user.cart.push(newCart);
   }
-  renderShoppingCart();
   localStorage.setItem("users", JSON.stringify(usersCSDL));
+  updateCartItemCount();
+  renderShoppingCart();
 }
 if (!localStorage.getItem("products")) {
   let products = [
@@ -205,6 +200,11 @@ function createCartItem(cartItem) {
         }')">-</span>
       </div>
        <div class="totalPrice">${total.toFixed(2)}</div> 
+       <div></div>
+       <div></div>
+       <span class = "deleteProduct" onclick = "deleteProduct('${
+         cartItem.id
+       }')">delete</span>
     </div>
   `;
 }
@@ -213,44 +213,87 @@ function renderShoppingCart() {
   let cartContainer = document.getElementById("cartContainer");
   let totalContainer = document.getElementById("totalContainer");
   cartContainer.innerHTML = "";
-  let cartData = JSON.parse(localStorage.getItem("users"));
-  if (cartData) {
-    cartData.forEach((user) => {
-      user.cart.forEach((cartItem) => {
-        let cartItemHTML = createCartItem(cartItem);
-        cartContainer.innerHTML += cartItemHTML;
-      });
+  let productData = JSON.parse(localStorage.getItem("users"));
+  let currentUser = decodeToken(localStorage.getItem("token")).data;
+  let currentUserData = productData.find((user) => user.id === currentUser.id);
+  console.log("currentData", currentUserData);
+  if (currentUserData && currentUserData.cart) {
+    currentUserData.cart.forEach((cartItem) => {
+      let cartItemHTML = createCartItem(cartItem);
+      cartContainer.innerHTML += cartItemHTML;
     });
   }
+
   let total = calculateTotalPrice();
-  totalContainer.innerText = `Tổng tiền của bạn là:  $${total}`;
+  totalContainer.innerText = `Tổng tiền của bạn là: $${total}`;
 }
 
 function calculateTotalPrice() {
-  let cartData = JSON.parse(localStorage.getItem("users"));
+  let productData = JSON.parse(localStorage.getItem("users"));
+  let currentUser = decodeToken(localStorage.getItem("token")).data;
+  let currentUserData = productData.find((user) => user.id === currentUser.id);
   let total = 0;
 
-  if (cartData) {
-    cartData.forEach((user) => {
-      user.cart.forEach((cartItem) => {
-        let product = getProductById(cartItem.id);
-        if (product) {
-          total += cartItem.quantity * parseFloat(product.price);
-        }
-      });
+  if (currentUserData) {
+    currentUserData.cart.forEach((cartItem) => {
+      let product = getProductById(cartItem.id);
+      if (product) {
+        total += cartItem.quantity * parseFloat(product.price);
+      }
     });
   }
 
-  return total.toFixed(2); // Giữ hai chữ số sau dấu thập phân
+  return total.toFixed(2);
 }
-// function increaseQuantity(productId) {
-//   let userCSDL = JSON.parse(localStorage.getItem("users"));
-//   console.log(userCSDL);
-//   console.log(productId);
-//   return;
-// }
-// function reduceQuantity(productId) {
-//   // Implement logic to reduce the quantity of a product in the cart
-// }
+function increaseQuantity(productId) {
+  let productData = JSON.parse(localStorage.getItem("users"));
+  let currentUser = decodeToken(localStorage.getItem("token")).data;
+  let user = productData.find((user) => user.id === currentUser.id);
+  let cartItem = user.cart.find((item) => item.id === productId);
+  if (cartItem) {
+    cartItem.quantity += 1;
+    localStorage.setItem("users", JSON.stringify(productData));
+    updateCartItemCount();
+    renderShoppingCart();
+  }
+}
 
-// renderShoppingCart();
+function reduceQuantity(productId) {
+  let productData = JSON.parse(localStorage.getItem("users"));
+  let currentUser = decodeToken(localStorage.getItem("token")).data;
+  let user = productData.find((user) => user.id === currentUser.id);
+  let cartItem = user.cart.find((item) => item.id === productId);
+  if (cartItem && cartItem.quantity > 1) {
+    cartItem.quantity -= 1;
+    localStorage.setItem("users", JSON.stringify(productData));
+    updateCartItemCount();
+    renderShoppingCart();
+  }
+}
+function deleteProduct(productId) {
+  let productData = JSON.parse(localStorage.getItem("users"));
+  let currentUser = decodeToken(localStorage.getItem("token")).data;
+  let user = productData.find((user) => user.id === currentUser.id);
+  user.cart = user.cart.filter((item) => item.id !== productId);
+  localStorage.setItem("users", JSON.stringify(productData));
+  updateCartItemCount();
+  renderShoppingCart();
+}
+function updateCartItemCount() {
+  let productData = JSON.parse(localStorage.getItem("users"));
+  let currentUser = decodeToken(localStorage.getItem("token")).data;
+  let user = productData.find((user) => user.id === currentUser.id);
+  let cartItemCount = user.cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+  console.log("so luong san pham", cartItemCount);
+  let cartItemCountshow = document.getElementById("cartItemCount");
+  cartItemCountshow.textContent = cartItemCount.toString();
+  if (!localStorage.getItem("cartItemCount")) {
+    localStorage.setItem("cartItemCount", cartItemCount.toString());
+  }
+
+  renderShoppingCart();
+}
+renderShoppingCart();
