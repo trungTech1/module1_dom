@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function displayContent(tab) {
+export function displayContent(tab) {
   let contentContainer = document.getElementById("content");
   contentContainer.innerHTML = `<h2>${
     tab.charAt(0).toUpperCase() + tab.slice(1)

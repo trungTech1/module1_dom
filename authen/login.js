@@ -62,7 +62,6 @@ if (!localStorage.getItem("token")) {
     userName: "admin",
     email: "admin@gmail.com",
     password: hashedAdminPassword,
-    cart: [],
   };
   let users = JSON.parse(localStorage.getItem("users")) || [];
   const adminExists = users.some(
@@ -76,20 +75,27 @@ if (!localStorage.getItem("token")) {
     console.log("Tài khoản admin đã tồn tại.");
   }
 }
+export function redirectToAdmin(user) {
+  let logoutButton = document.querySelector(".signoutButton");
 
-function isAdmin(user) {
-  return user && user.email === "admin@gmail.com";
-}
-function redirectToAdmin() {
-  let currentUser = decodeToken(localStorage.getItem("token"));
-  console.log("cuẻntusẻ", currentUser);
-  if (isAdmin(currentUser)) {
-    window.location.href = "http://127.0.0.1:5500/admin/";
+  if (isAdmin(user)) {
+    let adminButton = document.createElement("button");
+    adminButton.innerText = "Admin";
+    adminButton.id = "adminButton";
+    logoutButton.insertAdjacentElement("afterend", adminButton);
+    adminButton.addEventListener("click", () => {
+      window.location.href = "http://127.0.0.1:5500/admin/";
+    });
+    alert("Bạn là admin.");
   } else {
     alert("Bạn không có quyền truy cập trang admin.");
   }
 }
-export function login(event) {
+function isAdmin(user) {
+  return user && user.email === "admin@gmail.com";
+}
+
+function login(event) {
   event.preventDefault();
   let data = {
     loginId: event.target.loginId.value,
@@ -116,8 +122,9 @@ export function login(event) {
   let token = createToken(user);
   localStorage.setItem("token", token);
   window.location.href = "/";
-  redirectToAdmin();
+  redirectToAdmin(user);
 }
+
 const loginBtn = document.getElementById("login");
 const signupBtn = document.getElementById("signup");
 
@@ -170,35 +177,3 @@ document
       alert("vui lòng thử lại");
     }
   });
-// document
-//   .getElementById("signInWithGithub")
-//   .addEventListener("click", async () => {
-//     try {
-//       let gitHub = await signInWithGitHub();
-//       console.log("gitHub", gitHub);
-//       console.log("gitHub.user", gitHub.user);
-//       let users = JSON.parse(localStorage.getItem("users") || "[]");
-//       let checkGithub = users.find((user) => user.email === gitHub.user.email);
-//       if (checkGithub) {
-//         let user = users.find((item) => item.email === gitHub.user.email);
-//         let token = createToken(user);
-//         localStorage.setItem("token", token);
-//         window.location.href = "/";
-//       } else {
-//         let newUser = {
-//           userName: Math.ceil(Date.now() * Math.random()),
-//           email: gitHub.user.email,
-//           password: hash(Math.ceil(Date.now() * Math.random())),
-//           avata: gitHub.user.photoURL,
-//         };
-//         users.push(newUser);
-//         localStorage.setItem("users", JSON.stringify(users));
-//         let token = createToken(newUser);
-//         localStorage.setItem("token", token);
-//         window.location.href = "/";
-//       }
-//     } catch (err) {
-//       alert("vui lòng thử lại");
-//       console.log(err);
-//     }
-//   });
