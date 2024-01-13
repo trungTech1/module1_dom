@@ -48,7 +48,6 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 23px;
   background-color: white;
 }
 .wrapper main {
@@ -310,6 +309,22 @@ body {
   position: absolute;
   top: -63%;
   right: -37%;
+}
+
+.defaultAvatar {
+  max-width: 9%;
+}
+
+.authenBlock {
+  max-width: 20vw;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgba(243, 237, 224, 0);
+  padding-bottom: 26px;
 }
 
 .hero-button {
@@ -2483,4 +2498,44 @@ button[type=button] {
 #checkoutForm label {
   font-family: "Chilanka";
   font-size: 20px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sidebar li:hover {
+  background-color: #555;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }/*# sourceMappingURL=fashion.css.map */

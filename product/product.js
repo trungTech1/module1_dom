@@ -18,7 +18,7 @@ function createDetail(products) {
                     </div>
                     <p class="petFootdies-product-rating-number">5.0</p>
                   </div>
-                  <div class="petFootdies-product-price">${products.price}</div>
+                  <div class="petFootdies-product-price">$ ${products.price}</div>
                   <div class="petFootdies-product-last">
                     <button onclick="addtoCart('${products.id}')" class="petFootdies-product-addTocard">
                       ADD TO CARD
@@ -225,6 +225,7 @@ function renderShoppingCart() {
 
   let total = calculateTotalPrice();
   totalContainer.innerText = `Tổng tiền của bạn là: $${total}`;
+  document.getElementById("totalAmount").value = `$${total}`;
 }
 
 function calculateTotalPrice() {
@@ -318,15 +319,34 @@ function openPaymentForm() {
   document.getElementById("paymentOverlay").style.display = "block";
   document.getElementById("paymentForm").style.display = "block";
 }
+
 function closePaymentForm() {
   // Hide the overlay and payment form
   document.getElementById("paymentOverlay").style.display = "none";
   document.getElementById("paymentForm").style.display = "none";
 }
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closePaymentForm();
+  }
+});
 
 document.querySelector(".checkOut").addEventListener("click", () => {
+  let productData = JSON.parse(localStorage.getItem("users"));
+  let currentUser = decodeToken(localStorage.getItem("token")).data;
+  let user = productData.find((user) => user.id === currentUser.id);
+  if (user.cart.length === 0) {
+    alert("vui lòng thêm sản phẩm để thanh toán");
+
+    return;
+  }
+  let wrapper = document.querySelector(".wrapper");
+  wrapper.classList.remove("showcart");
   openPaymentForm();
 });
+function showError(errorMessage) {
+  alert(errorMessage);
+}
 function handlePaymentSubmission() {
   const userNameValue = document.getElementById("fullName").value;
   const phoneValue = document.getElementById("phoneNumber").value;
@@ -377,19 +397,10 @@ function clearShoppingCart() {
   renderShoppingCart();
 }
 function saveUserData(userData) {
-  // Kiểm tra dữ liệu nhập liệu nếu cần
-  // ...
-
-  // Lấy danh sách người dùng từ local
   let userArray = JSON.parse(localStorage.getItem("checkOutusers"));
-
-  // Kiểm tra xem userArray có phải là mảng không
   if (!Array.isArray(userArray)) {
-    // Nếu không phải là mảng, chuyển đổi thành mảng mới
     userArray = [];
   }
-
-  // Thêm hoặc cập nhật thông tin người dùng trong danh sách
   const existingUserIndex = userArray.findIndex(
     (user) => user.userName === userData.userName
   );
@@ -398,8 +409,6 @@ function saveUserData(userData) {
   } else {
     userArray.push(userData);
   }
-
-  // Lưu danh sách người dùng vào local
   localStorage.setItem("checkOutusers", JSON.stringify(userArray));
 }
 

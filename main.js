@@ -31,19 +31,22 @@ function renderHeader(data = null) {
                   </span>
                 </div>
               </div>
-<div>  ${
+<div class= "authenBlock">
+  ${
     data
-      ? `<div class= "email-block"><p class="emailDisplay">${
-          data.email
-        }</p> <img class = "emailImg" src="${
-          data.avata
-            ? `<img class="emailImg" src="${data.avata}" alt="hihi">`
-            : "<span>No avatar available</span>"
-        }" alt="hihi"> </div>
-<button onclick="logout()" class="sigoutButton">ĐĂNG XUẤT</button>`
-      : `<button onclick="redirectToLogin()" class="sigupButton">ĐĂNG KÝ</button> 
-      <button onclick="redirectToLogin()" class="sigupButton">ĐĂNG NHẬP</button>`
-  }</div>
+      ? `<div class="email-block">
+           <p class="emailDisplay">${data.email}</p>
+           ${
+             data.avata
+               ? `<img class="emailImg" src="${data.avata}" alt="User Avatar">`
+               : '<img class="defaultAvatar" src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png" alt="Default Avatar">'
+           }
+         </div>
+         <button onclick="logout()" class="signoutButton">ĐĂNG XUẤT</button>`
+      : `<button onclick="redirectToLogin()" class="signupButton">ĐĂNG KÝ</button>
+         <button onclick="redirectToLogin()" class="signupButton">ĐĂNG NHẬP</button>`
+  }
+</div>
     
             </div>
             <div class="header-botton">
@@ -100,10 +103,14 @@ function renderHeader(data = null) {
       
       <label for="address"><span class="formRequired">*</span>Address:</label>
       <textarea id="address" required></textarea>
+      
+      <label for="totalAmount"><span class="formRequired">*</span>Total Amount:</label>
+      <input type="text" id="totalAmount" readonly>
 
       <button type="button" onclick="processPayment()">Submit</button>
     </div>
   </div>
+
       </header>`;
 }
 

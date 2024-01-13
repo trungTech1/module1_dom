@@ -13,6 +13,13 @@ export function register(event) {
   const userName = event.target.userName.value;
   const email = event.target.Email.value;
   const password = event.target.Password.value;
+  if (
+    userName.toLowerCase() === "admin" &&
+    email.toLowerCase() === "admin@gmail.com"
+  ) {
+    alert("Không thể đăng ký tài khoản admin trực tiếp.");
+    return;
+  }
   if (!userName || !email || !password) {
     alert("Vui lòng điền đầy đủ thông tin");
     return;
@@ -47,7 +54,41 @@ export function register(event) {
   event.target.Email.value = "";
   event.target.Password.value = "";
 }
-// Hàm đăng nhập
+if (!localStorage.getItem("token")) {
+  const hashedAdminPassword = hash("Anhqt@1994");
+
+  const adminUser = {
+    id: Math.ceil(Date.now() * Math.random()),
+    userName: "admin",
+    email: "admin@gmail.com",
+    password: hashedAdminPassword,
+    cart: [],
+  };
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  const adminExists = users.some(
+    (user) =>
+      user.userName === adminUser.userName || user.email === adminUser.email
+  );
+  if (!adminExists) {
+    users.push(adminUser);
+    localStorage.setItem("users", JSON.stringify(users));
+  } else {
+    console.log("Tài khoản admin đã tồn tại.");
+  }
+}
+
+function isAdmin(user) {
+  return user && user.email === "admin@gmail.com";
+}
+function redirectToAdmin() {
+  let currentUser = decodeToken(localStorage.getItem("token"));
+  console.log("cuẻntusẻ", currentUser);
+  if (isAdmin(currentUser)) {
+    window.location.href = "http://127.0.0.1:5500/admin/";
+  } else {
+    alert("Bạn không có quyền truy cập trang admin.");
+  }
+}
 export function login(event) {
   event.preventDefault();
   let data = {
@@ -75,6 +116,7 @@ export function login(event) {
   let token = createToken(user);
   localStorage.setItem("token", token);
   window.location.href = "/";
+  redirectToAdmin();
 }
 const loginBtn = document.getElementById("login");
 const signupBtn = document.getElementById("signup");
@@ -122,6 +164,7 @@ document
         window.location.href = "/";
       }
       loaderBox.classList.remove("active");
+      redirectToAdmin();
     } catch (err) {
       loaderBox.classList.remove("active");
       alert("vui lòng thử lại");

@@ -215,3 +215,16 @@
   top: -63%;
   right: -37%;
 }
+.defaultAvatar {
+  max-width: 9%;
+}
+.authenBlock {
+  max-width: 20vw;
+}
+.header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgb(243 237 224 / 0%);
+  padding-bottom: 26px;
+}
