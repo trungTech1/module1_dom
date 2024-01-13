@@ -87,6 +87,23 @@ function renderHeader(data = null) {
             </div>
           </div>
         </div>
+         <div id="paymentOverlay"></div>
+
+  <div id="paymentForm">
+    <h2>Payment Form</h2>
+    <div id="checkoutForm">
+      <label for="fullName"><span class="formRequired">*</span>Full Name:</label>
+      <input type="text" id="fullName" required>
+      
+      <label for="phoneNumber"><span class="formRequired">*</span>Phone Number:</label>
+      <input type="tel" id="phoneNumber" required>
+      
+      <label for="address"><span class="formRequired">*</span>Address:</label>
+      <textarea id="address" required></textarea>
+
+      <button type="button" onclick="processPayment()">Submit</button>
+    </div>
+  </div>
       </header>`;
 }
 

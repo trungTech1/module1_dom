@@ -1,4 +1,3 @@
-
 function createDetail(products) {
   return `<div class="petFootdies-product-detail">
                   <div class="petFootdies-img-block">
@@ -314,4 +313,97 @@ searchInput.addEventListener("keypress", (event) => {
     performSearch();
   }
 });
+function openPaymentForm() {
+  // Hiển thị overlay và form thanh toán
+  document.getElementById("paymentOverlay").style.display = "block";
+  document.getElementById("paymentForm").style.display = "block";
+}
+function closePaymentForm() {
+  // Hide the overlay and payment form
+  document.getElementById("paymentOverlay").style.display = "none";
+  document.getElementById("paymentForm").style.display = "none";
+}
+
+document.querySelector(".checkOut").addEventListener("click", () => {
+  openPaymentForm();
+});
+function handlePaymentSubmission() {
+  const userNameValue = document.getElementById("fullName").value;
+  const phoneValue = document.getElementById("phoneNumber").value;
+  const addressValue = document.getElementById("address").value;
+  if (!userNameValue || !phoneValue || !addressValue) {
+    showError("Vui lòng nhập đầy đủ thông tin để shop giao hàng đúng hẹn");
+    return;
+  }
+  let existingUserData = localStorage.getItem("checkOutusers");
+  if (existingUserData) {
+    const confirmUpdate = confirm(
+      "Thông tin người dùng đã tồn tại. Bạn có muốn cập nhật thông tin không?"
+    );
+
+    if (confirmUpdate) {
+      const userData = {
+        userName: userNameValue,
+        phone: phoneValue,
+        address: addressValue,
+        createdAt: new Date().toLocaleString(),
+        totalAmount: calculateTotalPrice(),
+      };
+      saveUserData(userData);
+    }
+  } else {
+    const userData = {
+      userName: userNameValue,
+      phone: phoneValue,
+      address: addressValue,
+      createdAt: new Date().toLocaleString(),
+      totalAmount: calculateTotalPrice(),
+    };
+    saveUserData(userData);
+  }
+  clearShoppingCart();
+  closePaymentForm();
+}
+function clearShoppingCart() {
+  let productData = JSON.parse(localStorage.getItem("users"));
+  let currentUser = decodeToken(localStorage.getItem("token")).data;
+  let user = productData.find((user) => user.id === currentUser.id);
+
+  // Xóa tất cả sản phẩm khỏi giỏ hàng của người dùng
+  user.cart = [];
+
+  localStorage.setItem("users", JSON.stringify(productData));
+  updateCartItemCount();
+  renderShoppingCart();
+}
+function saveUserData(userData) {
+  // Kiểm tra dữ liệu nhập liệu nếu cần
+  // ...
+
+  // Lấy danh sách người dùng từ local
+  let userArray = JSON.parse(localStorage.getItem("checkOutusers"));
+
+  // Kiểm tra xem userArray có phải là mảng không
+  if (!Array.isArray(userArray)) {
+    // Nếu không phải là mảng, chuyển đổi thành mảng mới
+    userArray = [];
+  }
+
+  // Thêm hoặc cập nhật thông tin người dùng trong danh sách
+  const existingUserIndex = userArray.findIndex(
+    (user) => user.userName === userData.userName
+  );
+  if (existingUserIndex !== -1) {
+    userArray[existingUserIndex] = userData;
+  } else {
+    userArray.push(userData);
+  }
+
+  // Lưu danh sách người dùng vào local
+  localStorage.setItem("checkOutusers", JSON.stringify(userArray));
+}
+
+function processPayment() {
+  handlePaymentSubmission();
+}
 renderShoppingCart();

@@ -88,6 +88,7 @@
     letter-spacing: 0.19px;
   }
 }
+
 .header-botton {
   width: 100vw;
   height: 32px;
@@ -97,7 +98,7 @@
   display: grid;
   grid-template-columns: 12vw 47vw 12vw;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .header-categories-selection {
   color: #41403e;
@@ -129,6 +130,7 @@
     line-height: normal;
     letter-spacing: 0.19px;
     text-transform: capitalize;
+    cursor: pointer;
   }
   &-item {
     list-style: none;
@@ -148,8 +150,9 @@
 .header-menu-item:hover .header-menu-link {
   color: #e74c3c;
 }
-.sigupButton,
-.sigoutButton {
+.signinButton,
+.signupButton,
+.signoutButton {
   padding: 10px 45px;
   font-size: 16px;
   cursor: pointer;
@@ -158,19 +161,19 @@
   margin: 5px;
   transition: background-color 0.3s;
 }
-
-.sigupButton {
+.signinButton,
+.signupButton {
   background-color: #4caf50;
   color: #fff;
 }
 
-.sigoutButton {
+.signoutButton {
   background-color: #f44336;
   color: #fff;
 }
-
-.sigupButton:hover,
-.sigoutButton:hover {
+.signinButton:hover,
+.signupButton:hover,
+.signoutButton:hover {
   background-color: #45a049;
 }
 .email-block {

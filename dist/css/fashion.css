@@ -183,7 +183,7 @@ body {
   display: grid;
   grid-template-columns: 12vw 47vw 12vw;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .header-categories-selection {
@@ -216,6 +216,7 @@ body {
   line-height: normal;
   letter-spacing: 0.19px;
   text-transform: capitalize;
+  cursor: pointer;
 }
 .header-menu-item {
   list-style: none;
@@ -237,8 +238,9 @@ body {
   color: #e74c3c;
 }
 
-.sigupButton,
-.sigoutButton {
+.signinButton,
+.signupButton,
+.signoutButton {
   padding: 10px 45px;
   font-size: 16px;
   cursor: pointer;
@@ -248,18 +250,20 @@ body {
   transition: background-color 0.3s;
 }
 
-.sigupButton {
+.signinButton,
+.signupButton {
   background-color: #4caf50;
   color: #fff;
 }
 
-.sigoutButton {
+.signoutButton {
   background-color: #f44336;
   color: #fff;
 }
 
-.sigupButton:hover,
-.sigoutButton:hover {
+.signinButton:hover,
+.signupButton:hover,
+.signoutButton:hover {
   background-color: #45a049;
 }
 
@@ -2390,4 +2394,93 @@ button:hover {
 .codepro-btn.hover-border-11 span:hover::before,
 .codepro-btn.hover-border-11 span:hover::after {
   height: 0%;
+}
+
+#paymentOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+#paymentForm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 64vh;
+  width: 56vw;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  z-index: 1001;
+  background-image: url("https://www.shutterstock.com/image-photo/happy-puppy-welsh-corgi-14-600nw-2270841247.jpg");
+  background-size: auto;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-position: left 25vw center;
+}
+
+#paymentForm h2 {
+  width: 60%;
+  height: 10%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #b1e6fd;
+  transform: translateX(-41px);
+  font-size: 29px;
+  color: #a95151;
+  /* margin-bottom: 5%; */
+  margin: 3% 0 6% 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#checkoutForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 2%;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button[type=button] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.formRequired {
+  color: red;
+}
+
+#checkoutForm label {
+  font-family: "Chilanka";
+  font-size: 20px;
 }/*# sourceMappingURL=fashion.css.map */
