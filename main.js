@@ -284,7 +284,6 @@ function checkLogin() {
   }
 }
 checkLogin();
-
 function logout() {
   localStorage.removeItem("token");
   window.location.reload();
@@ -298,18 +297,17 @@ function reloadHome() {
     window.location.href = "http://127.0.0.1:5500/index.html";
   }, 5000);
 }
-document.getElementById("Shopping").addEventListener("click", () => {
-  console.log("Vào trang shop");
-  // Hiển thị thanh progress bar
-  const progressBar = document.getElementById("myProgressBar");
-  progressBar.style.width = "0%";
-  progressBar.style.transition = "width 1s linear";
-
-  // Thiết lập chuyển hướng sau 1 giây
-  setTimeout(() => {
-    progressBar.style.width = "100%";
+document.querySelectorAll(".Shopping").forEach((element) => {
+  element.addEventListener("click", () => {
+    console.log("Vào trang shop");
+    const progressBar = document.getElementById("myProgressBar");
+    progressBar.style.width = "0%";
+    progressBar.style.transition = "width 1s linear";
     setTimeout(() => {
-      window.location.href = "http://127.0.0.1:5500/product/";
+      progressBar.style.width = "100%";
+      setTimeout(() => {
+        window.location.href = "http://127.0.0.1:5500/product/";
+      }, 1000);
     }, 1000);
-  }, 1000);
+  });
 });

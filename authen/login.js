@@ -1,13 +1,10 @@
 import { signInWithGoogle } from "../firebase.js";
-// import { signInWithGitHub } from "../firebaseGithub.js";
-
 if (checkLogin()) window.location.href = "/";
 console.clear();
 export function changeForm(formToShow, formToHide) {
   formToShow.classList.add("slide-up");
   formToHide.classList.remove("slide-up");
 }
-// Hàm đăng ký
 export function register(event) {
   event.preventDefault();
   const userName = event.target.userName.value;
@@ -54,46 +51,6 @@ export function register(event) {
   event.target.Email.value = "";
   event.target.Password.value = "";
 }
-if (!localStorage.getItem("token")) {
-  const hashedAdminPassword = hash("Anhqt@1994");
-
-  const adminUser = {
-    id: Math.ceil(Date.now() * Math.random()),
-    userName: "admin",
-    email: "admin@gmail.com",
-    password: hashedAdminPassword,
-  };
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-  const adminExists = users.some(
-    (user) =>
-      user.userName === adminUser.userName || user.email === adminUser.email
-  );
-  if (!adminExists) {
-    users.push(adminUser);
-    localStorage.setItem("users", JSON.stringify(users));
-  } else {
-    console.log("Tài khoản admin đã tồn tại.");
-  }
-}
-export function redirectToAdmin(user) {
-  let logoutButton = document.querySelector(".signoutButton");
-
-  if (isAdmin(user)) {
-    let adminButton = document.createElement("button");
-    adminButton.innerText = "Admin";
-    adminButton.id = "adminButton";
-    logoutButton.insertAdjacentElement("afterend", adminButton);
-    adminButton.addEventListener("click", () => {
-      window.location.href = "http://127.0.0.1:5500/admin/";
-    });
-    alert("Bạn là admin.");
-  } else {
-    alert("Bạn không có quyền truy cập trang admin.");
-  }
-}
-function isAdmin(user) {
-  return user && user.email === "admin@gmail.com";
-}
 
 function login(event) {
   event.preventDefault();
@@ -122,7 +79,6 @@ function login(event) {
   let token = createToken(user);
   localStorage.setItem("token", token);
   window.location.href = "/";
-  redirectToAdmin(user);
 }
 
 const loginBtn = document.getElementById("login");
