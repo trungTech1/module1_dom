@@ -1,3 +1,26 @@
+function hash(everyone) {
+  everyone = `abcd**_${everyone}_2143sdasds`;
+  let hashEveryone = "";
+  for (let i in everyone) {
+    hashEveryone += everyone[i].charCodeAt(0);
+  }
+  return hashEveryone * 12;
+}
+let rootUser = {
+  id: Math.ceil(Date.now() * Math.random()),
+  userName: "admin",
+  email: "admin@gmail.com",
+  password: hash("Anhqt@1994"),
+  role: "admin",
+  cart: [],
+};
+let users = JSON.parse(localStorage.getItem("users") || "[]");
+localStorage.setItem("users", JSON.stringify(users));
+let existingRootUser = users.find((user) => user.email === rootUser.email);
+if (!existingRootUser) {
+  users.push(rootUser);
+  localStorage.setItem("users", JSON.stringify(users));
+}
 document.getElementById("usersTab").addEventListener("click", function () {
   displayContent("users");
 });
@@ -24,6 +47,27 @@ export function displayContent(tab) {
     displaySettingsContent();
   }
 }
+export function toggleUserRole(userId) {
+  let loggedInUser = checkLogin();
+  if (!loggedInUser || loggedInUser.role !== "admin") {
+    alert("Bạn không có quyền chuyển đổi quyền.");
+    return;
+  }
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let userIndex = users.findIndex((user) => user.id === userId);
+
+  if (userIndex !== -1) {
+    users[userIndex].role = users[userIndex].role === "user" ? "admin" : "user";
+    users[userIndex].status =
+      users[userIndex].status === "approve" ? "de" : "approve";
+    localStorage.setItem("users", JSON.stringify(users));
+    displayUserTable();
+    console.log(`Đã chuyển đổi quyền cho người dùng với ID ${userId}`);
+  } else {
+    console.error(`Không tìm thấy người dùng với ID ${userId}`);
+  }
+}
 
 function displayUserTable() {
   let users = JSON.parse(localStorage.getItem("users")) || [];
@@ -48,14 +92,21 @@ function displayUserTable() {
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
     let cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
+    let cell5 = row.insertCell(4);
 
     cell1.textContent = user.id;
     cell2.textContent = user.userName;
     cell3.textContent = user.email;
-    cell4.innerHTML = `<button onclick="approveUser(${user.id})">Approve</button>`;
-    cell5.innerHTML = `<button onclick="editUser(${user.id})">Sửa</button>
-                       <button onclick="deleteUser(${user.id})">Xóa</button>`;
+
+    let statusButton = document.createElement("button");
+    statusButton.textContent = user.status === "approve" ? "Approve" : "Reject";
+    statusButton.addEventListener("click", () => toggleStatus(user.id));
+    cell4.appendChild(statusButton);
+
+    let toggleButton = document.createElement("button");
+    toggleButton.textContent = "Chuyển đổi Quyền";
+    toggleButton.addEventListener("click", () => toggleUserRole(user.id));
+    cell5.appendChild(toggleButton);
   });
 
   contentContainer.innerHTML = "";

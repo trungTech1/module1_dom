@@ -252,15 +252,22 @@ function createToken(data) {
 }
 
 function decodeToken(token) {
+  if (!token) {
+    console.error("Token is null or undefined");
+    return null;
+  }
+
   let baseStr = ``;
   for (let i in token.split("|")) {
     if (token.split("|")[i] == "") break;
     baseStr += String.fromCharCode(token.split("|")[i] / 2);
   }
+
   try {
     return JSON.parse(baseStr);
   } catch (err) {
-    return false;
+    console.error("Error parsing JSON in decodeToken:", err);
+    return null;
   }
 }
 function hash(everyone) {

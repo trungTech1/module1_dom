@@ -29,6 +29,7 @@ export function register(event) {
     email: email,
     password: hashedPassword,
     cart: [],
+    role: "user",
   };
   let users = JSON.parse(localStorage.getItem("users") || "[]");
   if (
@@ -78,7 +79,11 @@ function login(event) {
 
   let token = createToken(user);
   localStorage.setItem("token", token);
-  window.location.href = "/";
+  if (user.role === "admin") {
+    window.location.href = "http://127.0.0.1:5500/admin/index.html";
+  } else {
+    window.location.href = "/";
+  }
 }
 
 const loginBtn = document.getElementById("login");
@@ -120,6 +125,7 @@ document
           password: hash(Math.ceil(Date.now() * Math.random())),
           avata: result.user.photoURL,
           cart: [],
+          role: "user",
         };
         localStorage.setItem("users", JSON.stringify([...users, newUser]));
         let token = createToken(newUser);
